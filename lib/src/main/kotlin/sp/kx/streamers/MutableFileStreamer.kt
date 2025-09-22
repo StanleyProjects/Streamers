@@ -11,10 +11,10 @@ class MutableFileStreamer(
     private val dst: File = src,
 ) : MutableStreamer {
     override fun writer(): OutputStream {
-        return FileOutputStream(src)
+        return FileOutputStream(dst)
     }
 
     override fun reader(): InputStream {
-        return FileInputStream(dst)
+        return FileInputStream(src)
     }
 }
