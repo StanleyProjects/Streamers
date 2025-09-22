@@ -6,12 +6,15 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 
-class MutableFileStreamer(private val delegate: File) : MutableStreamer {
+class MutableFileStreamer(
+    private val src: File,
+    private val dst: File = src,
+) : MutableStreamer {
     override fun writer(): OutputStream {
-        return FileOutputStream(delegate)
+        return FileOutputStream(src)
     }
 
     override fun reader(): InputStream {
-        return FileInputStream(delegate)
+        return FileInputStream(dst)
     }
 }
